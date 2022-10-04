@@ -111,9 +111,9 @@ void setup() {
 }
 ```  
 **Step 2.)** Turn on the first LED by increasing the duty cycle of the PWM signal driving the LED, until the LED is fully ON. Repeat this until All LEDs are fully on.
->>> - In order to increasing the duty cycle of the PWM signal, I use analogWrite(PIN,value) which as you can see it have two parameters. The first parameter *"pin"* is the arduino pin to write in and *"value"* is  the duty cycle: between 0 (always off) and 255 (always on).  
+>>> - In order to increasing the duty cycle of the PWM signal, I use ```analogWrite(PIN,value)``` which as you can see it have two parameters. The first parameter *"pin"* is the arduino pin to write in and *"value"* is  the duty cycle: between 0 (always off) and 255 (always on).  
 >>> - I use *nested for loop* which the outer loop is for specify the pin index and the inner loop is for specify the duty cycle value.  
->>> - I use two *nested for loops* as shown below. The first one is for turn on the LEDs one by one, and the second one is to turn off LEDs one by one after all LEDs are fully on.  
+>>> - I use two *nested for loops* as shown below. The first one is to turn on the LEDs one by one, and the second one is to turn off LEDs one by one after all LEDs are fully on.  
 ```C
 void loop() {
   // put your main code here, to run repeatedly:
@@ -151,18 +151,59 @@ In this pattern we have to use 8 PWM pins, But arduino NANO have only 6 PWM supp
 
 **Step 1.)** Initially, all LEDs are OFF.  
 >>> - Just like the last pattern we initially turn off all LEDs in the setup() function.
+>>> - Since I want to use PWM on ESP32, so I have to set the PWM signal frequency for an LED, I also need to set the signal’s duty cycle resolution: I have resolutions from 1 to 16 bits.  I’ll use 8-bit resolution, which means I can control the LED brightness using a value from 0 to 255. By using ```ledcSetup(LED_PIN,freq,resolution)```.
 ```C
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
-  for (int i=0;i<num_leds;i++){
-    pinMode(led_pins[i], OUTPUT);
-    digitalWrite(led_pins[i], LOW);
+  for ( int i=0; i<num_leds; i++ ) {
+    ledcSetup(i, 5000, 8);
   }
 }
 ```  
-**Step 2.)** Turn on the first 4 LEDs using PWM signals, each with different duty cycles (e.g. 100%, 50%, 25%, 10%), and the rest of the LEDs are OFF.  
->>> - 
+**Step 2.)** Turn on the first 4 LEDs using PWM signals, each with different duty cycles (e.g. 100%, 75%, 25%, 0.39%), and the rest of the LEDs are OFF.  
+>>> - I'll need to specify to which GPIO or GPIOs the signal will appear upon. For that I have to use ```ledcAttachPin(GPIO, channel)```. This function accepts two arguments. The first is the GPIO that will output the signal, and the second is the channel that will generate the signal.
+>>> - To turn on a led with dutycycle value we have to use ```ledcWrite(pin,value)``` which accepts two parameter, pin is LED oin that you want to assign duty-cycle value to and value is of course a dutycycle value.
+>>> - Finally, we use ```ledcDetachPin(GPIO)``` to detach pin from a channel in order to specify it again with a new channel via ```ledcAttachPin``` through the loop.  
+```C
+void loop() {
+  for (int j = 0;j<num_leds;j++){
+    if(leda==num_leds){
+      leda = 0; 
+    }
+    if(ledb==num_leds){
+      ledb = 0; 
+    }
+    if(ledc==num_leds){
+      ledc = 0; 
+    }
+    if(ledd==num_leds){
+      ledd = 0; 
+    }
+    ledcAttachPin(led_pins[leda], leda);
+    ledcWrite(leda,255); //100%
+
+    ledcAttachPin(led_pins[ledb], ledb);
+    ledcWrite(ledb,191.25); //75%
+
+    ledcAttachPin(led_pins[ledc], ledc);
+    ledcWrite(ledc,127.5); //50%
+
+    ledcAttachPin(led_pins[ledd], ledd);
+    ledcWrite(ledd,1); //25%
+
+    delay(2000);
+
+    ledcDetachPin(led_pins[leda]);
+    ledcDetachPin(led_pins[ledb]);
+    ledcDetachPin(led_pins[ledc]);
+    ledcDetachPin(led_pins[ledd]);
+    
+    leda++;ledb++;ledc++;ledd++;
+  }
+}
+```  
+#### Pattern D Result  
+![result D](assets/resultD.gif)  
 
 ## Problem 2.)
 - Reimplement LED changing patterns A and B using the Pin C++ class.
