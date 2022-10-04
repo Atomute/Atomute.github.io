@@ -22,7 +22,6 @@ Problems overview
 **Board that I use**  
 >>> - Arduino NANO  
 
-  
 **Step 1.)** Initially, only one LED (at index=0) is ON, and the rest of the LEDs are OFF.<br>
 >>> - In this step we have to make sure that only the first led is on and other are off by using this code in my setup() function.
 ```C
@@ -34,7 +33,6 @@ void setup() {
   }
 }
 ```
-
 **Step 2.)** The position of the ON LED should be moved to the next in a circular manner in a fixed time interval and then repeat.  
 >>> * This step we will move to loop() function using the for loop to turn on and turn off each led one by one, my code look like this.
 ```C
@@ -46,6 +44,7 @@ void loop() {
   }
 }
 ```
+* * *
 ### Led changing pattern B
 
 **<<<[To the Simulation](https://wokwi.com/projects/342308238392296019)>>>**  
@@ -83,7 +82,7 @@ void loop() {
   delay(500);
 }
 ```
-
+* * *
 ### Led changing pattern C
 
 **<<<[To the Simulation](https://wokwi.com/projects/343524293353669204)>>>**  
@@ -133,7 +132,7 @@ void loop() {
   
 }
 ```
-
+* * *
 ### Led changing pattern D
 
 **<<<[To the Simulation](https://wokwi.com/projects/343566202635813459)>>>**  
