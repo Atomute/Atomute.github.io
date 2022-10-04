@@ -44,7 +44,7 @@ void loop() {
   }
 }
 ```
-**Result**  
+#### Pattern A Result  
 ![result A](assets/resultA.gif)
 * * *
 ### Led changing pattern B
@@ -84,7 +84,7 @@ void loop() {
   delay(500);
 }
 ```
-**Result**  
+#### Pattern B Result  
 ![result B](assets/resultB.gif)
 * * *
 ### Led changing pattern C
@@ -136,7 +136,7 @@ void loop() {
   
 }
 ```
-**Result**  
+#### Pattern C Result  
 ![result C](assets/resultC.gif)
 * * *
 ### Led changing pattern D
