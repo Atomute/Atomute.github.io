@@ -7,7 +7,5 @@ nav:
   - Home: index.md
   - Arduin: arduino1.md
 
-repo_url: https://github.com/Atomute/Atomute.github.io
-
 plugins:
   - git-committers
