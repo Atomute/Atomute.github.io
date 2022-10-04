@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script>
+	// Hack for scrolling window when linking to anchor tag with fixed nav header
+        var shiftWindow = function() { scrollBy(0, -75) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow(); }
+      </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Arduin - Thanat's Work Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/http.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/base.js"></script> 
+    </head>
+
+    <body class="">
+
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<div class="container">
+	<a class="navbar-brand" href="..">Thanat's Work Blog</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse">
+          <!-- Main navigation -->
+          <nav class="nav">
+            <ul class="navbar-nav">
+              <li >
+                <a class="nav-link" href="..">Home</a>
+              </li>
+              <li class="active">
+                <a class="nav-link" href="./">Arduin</a>
+              </li>
+            </ul>
+          </nav>
+
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/Atomute/Atomute.github.io/edit/master/docs/arduino1.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+            </li>
+          </ul>
+	</div>
+	</div>
+      </nav><div id="content" class="container">
+        
+      <div class="row">
+        <div class="col-md-9" role="main">
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    <li class="breadcrumb-item active" aria-current="page">Arduin</li>
+  </ol>
+</nav>
+
+
+<h1 id="arduino-programming-problems-for-class-on-2022-09-09">Arduino Programming Problems for class on 2022-09-09</h1>
+<pre><code>Problems overview
+  Problem 1
+  - Write Arduino C/C++ programs that implement 
+  the following LED changing patterns (A, B, C, D).
+  - Use the Wokwi Simulator first to test your code 
+  and then verify the correctness using real hardware.  
+
+  Problem 2
+  - Reimplement LED changing patterns A and B using the Pin C++ class.
+</code></pre>
+<h2 id="problem-1">Problem 1.)</h2>
+<ul>
+<li>Write Arduino C/C++ programs that implement the following LED changing patterns (A, B, C, D).</li>
+<li>Use the Wokwi Simulator first to test your code and then verify the correctness using real hardware.</li>
+</ul>
+<h3 id="led-changing-pattern-a">Led changing pattern A</h3>
+<p><strong>&lt;&lt;&lt;<a href="https://wokwi.com/projects/342307014363316820">To the Simulation</a>&gt;&gt;&gt;</strong>  </p>
+<p><strong>Board that I use</strong>  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>Arduino NANO  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Step 1.)</strong> Initially, only one LED (at index=0) is ON, and the rest of the LEDs are OFF.<br></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>In this step we have to make sure that only the first led is on and other are off by using this code in my setup() function.</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void setup() {
+  Serial.begin(115200);
+  for ( int i=0; i &lt; num_led; i++ ) {
+    pinMode( led_pin[i], OUTPUT ); 
+    digitalWrite( led_pin[i], (i==0) ? HIGH : LOW );
+  }
+}
+</code></pre>
+<p><strong>Step 2.)</strong> The position of the ON LED should be moved to the next in a circular manner in a fixed time interval and then repeat.  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>This step we will move to loop() function using the for loop to turn on and turn off each led one by one, my code look like this.</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void loop() {
+  for (int i=0;i&lt;num_led;i++){
+    digitalWrite(led_pin[i], HIGH);
+    delay(500);
+    digitalWrite(led_pin[i], LOW);
+  }
+}
+</code></pre>
+<h3 id="led-changing-pattern-b">Led changing pattern B</h3>
+<p><strong>&lt;&lt;&lt;<a href="https://wokwi.com/projects/342308238392296019">To the Simulation</a>&gt;&gt;&gt;</strong>  </p>
+<p><strong>Board that I use</strong>  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>Arduino NANO  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Step 1.)</strong> Initially all leds are off.  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>In this step we have to make sure that all leds are off by using this code in my setup function.  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void setup() {
+  Serial.begin(115200);
+  for (int i=0;i&lt;num_led;i++){
+    pinMode(led_pin[i], OUTPUT);
+    digitalWrite(led_pin[i], LOW);
+  }
+}
+</code></pre>
+<p><strong>Step 2.)</strong> Turn on the LEDs one by one with a time delay, starting at index=0 until all LEDs are ON. When all leds are on, turn off LEDs one by one starting from index n-1(the last one that turned on).  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>We will move to loop() function to turn led on one by one using <em>for loop.</em>  </li>
+<li>When all LEDs are on turn off LEDs one by one starting from index n-1 by using another <em>for loop</em>.</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void loop() {
+  //turn led on one by one
+  for (int i = 0;i&lt;num_led;i++){
+    digitalWrite(led_pin[i], HIGH);
+    delay(500);
+  }
+  //when all leds are on turn off one by one
+  //starting from index n-1
+  for (int n = num_led-1;n&gt;=0;n--){
+    digitalWrite(led_pin[n], LOW);
+    delay(500);
+  }
+  delay(500);
+}
+</code></pre>
+<h3 id="led-changing-pattern-c">Led changing pattern C</h3>
+<p><strong>&lt;&lt;&lt;<a href="https://wokwi.com/projects/343524293353669204">To the Simulation</a>&gt;&gt;&gt;</strong>  </p>
+<p><strong>Board that I use</strong>  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>Arduino NANO  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Before we start</strong><br />
+Since in this pattern is relate with PWM or Pulse Width Modulation, in order to varying brightnesses of LEDs. And in Arduino NANO we have 6 PWM supported pins such as 3,5,6,9,10,11.<br />
+<em>Source:</em> <a href="https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/">https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/</a>  </p>
+<p><strong>Step 1.)</strong> Initially all LEDs are off  </p>
+<blockquote>
+<blockquote>
+<ul>
+<li>Just like the last pattern we initially turn off all LEDs in the setup() function.</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  for (int i=0;i&lt;num_leds;i++){
+    pinMode(led_pins[i], OUTPUT);
+    digitalWrite(led_pins[i], LOW);
+  }
+}
+</code></pre>
+<p><strong>Step 2.)</strong> Turn on the first LED by increasing the duty cycle of the PWM signal driving the LED, until the LED is fully ON. Repeat this until All LEDs are fully on.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>In order to increasing the duty cycle of the PWM signal, I use analogWrite(PIN,value) which as you can see it have two parameters. The first parameter <em>"pin"</em> is the arduino pin to write in and <em>"value"</em> is  the duty cycle: between 0 (always off) and 255 (always on).  </li>
+<li>I use <em>nested for loop</em> which the outer loop is for specify the pin index and the inner loop is for specify the duty cycle value.  </li>
+<li>I use two <em>nested for loops</em> as shown below. The first one is for turn on the LEDs one by one, and the second one is to turn off LEDs one by one after all LEDs are fully on.  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void loop() {
+  // put your main code here, to run repeatedly:
+  int timedelay = 5;
+
+  for (int j = 0;j&lt;num_leds;j++){
+    for (int i=0;i&lt;255;i++){
+      analogWrite(led_pins[j],i);
+      delay(timedelay);
+    }
+  }
+
+  for (int j = 0;j&lt;num_leds;j++){
+    for (int i=255;i&gt;=0;i--){
+      analogWrite(led_pins[j],i);
+      delay(timedelay);
+    }
+  }
+  delay(1000);
+
+}
+</code></pre>
+<h3 id="led-changing-pattern-d">Led changing pattern D</h3>
+<p><strong>&lt;&lt;&lt;<a href="https://wokwi.com/projects/343566202635813459">To the Simulation</a>&gt;&gt;&gt;</strong>  </p>
+<p><strong>Board I use</strong>  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>ESP32  </li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Before we start</strong><br />
+In this pattern we have to use 8 PWM pins, But arduino NANO have only 6 PWM supported pins. So, I have to chage to ESP32 which has a LED PWM controller with 16 independent channels (from 0 to 15) that can be configured to generate PWM signals with different properties.  </p>
+<p><strong>Step 1.)</strong> Initially, all LEDs are OFF.  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>Just like the last pattern we initially turn off all LEDs in the setup() function.</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-C">void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  for (int i=0;i&lt;num_leds;i++){
+    pinMode(led_pins[i], OUTPUT);
+    digitalWrite(led_pins[i], LOW);
+  }
+}
+</code></pre>
+<p><strong>Step 2.)</strong> Turn on the first 4 LEDs using PWM signals, each with different duty cycles (e.g. 100%, 50%, 25%, 10%), and the rest of the LEDs are OFF.  </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="problem-2">Problem 2.)</h2>
+<ul>
+<li>Reimplement LED changing patterns A and B using the Pin C++ class.</li>
+</ul>
+
+<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+  <li class="last-updated-holder displayDate loading">
+    <span class="last-updated-text">Last updated:</span>
+    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date"></time>
+  </li>
+<!--
+  <li class="readingTime">
+    2 minutes to read
+  </li>
+-->
+  <li class="contributors-holder">
+    <span class="contributors-text">Contributors</span>
+    <ul class="contributors" data-bi-name="contributors"></ul>
+  </li>
+</ul>
+</div>
+        <div class="col-md-3"><div class="navbar-light navbar-expand-md hidden-print sticky-top sticky-offset" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column bs-sidenav">
+            <li class="nav-item main"><a class="nav-link" href="#arduino-programming-problems-for-class-on-2022-09-09">Arduino Programming Problems for class on 2022-09-09</a></li>
+                <li class="nav-item">
+                    <a href="#problem-1" class="nav-link">Problem 1.)</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#problem-2" class="nav-link">Problem 2.)</a>
+                </li>
+        </ul>
+    </div>
+</div></div>
+      </div>
+      </div>
+
+      <footer class="col-md-12">
+	<hr>
+	<div class="container">
+	</div>
+      </footer>
+      <script>
+	var base_url = "..",
+            shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+      </script>
+      <script src="../js/base.js" defer></script>
+
+      <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="h4 modal-title">Keyboard Shortcuts</p>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
