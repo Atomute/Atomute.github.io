@@ -1,17 +1,15 @@
 # Arduino Programming Problems for class on 2022-09-09
-```
-Problems overview
-  Problem 1
-  - Write Arduino C/C++ programs that implement 
-  the following LED changing patterns (A, B, C, D).
-  - Use the Wokwi Simulator first to test your code 
-  and then verify the correctness using real hardware.  
 
-  Problem 2
+## Problems overview
+  **<a href="#problem1">Problem 1</a>**  
+  - Write Arduino C/C++ programs that implement the following LED changing patterns (A, B, C, D).  
+  - Use the Wokwi Simulator first to test your code and then verify the correctness using real hardware.  
+  
+  **<a href="#problem2">Problem 2</a>**  
   - Reimplement LED changing patterns A and B using the Pin C++ class.
-```
-
-## Problem 1.)
+  
+  
+<h2 id="problem1">Problem 1.)</h2>
 - Write Arduino C/C++ programs that implement the following LED changing patterns (A, B, C, D).
 - Use the Wokwi Simulator first to test your code and then verify the correctness using real hardware.
 
@@ -205,5 +203,5 @@ void loop() {
 #### Pattern D Result  
 ![result D](assets/resultD.gif)  
 
-## Problem 2.)
+<h2 id="problem2">Promblem 2.)</h2>
 - Reimplement LED changing patterns A and B using the Pin C++ class.
