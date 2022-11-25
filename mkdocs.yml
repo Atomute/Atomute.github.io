@@ -5,7 +5,6 @@ theme:
 
 nav:
   - Home: index.md
-  - Arduin: arduino1.md
 
 plugins:
   - git-committers
