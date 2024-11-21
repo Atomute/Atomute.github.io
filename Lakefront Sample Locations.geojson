@@ -1,0 +1,67 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Central Park",
+                "type": "Park"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.968285,
+                    40.785091
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Times Square",
+                "type": "Tourist Attraction"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.98513,
+                    40.758896
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Broadway Theater District",
+                "type": "Entertainment"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -73.987465,
+                            40.759901
+                        ],
+                        [
+                            -73.981671,
+                            40.761489
+                        ],
+                        [
+                            -73.983817,
+                            40.763755
+                        ],
+                        [
+                            -73.989611,
+                            40.762167
+                        ],
+                        [
+                            -73.987465,
+                            40.759901
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}
